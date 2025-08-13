@@ -1,6 +1,16 @@
 import type { Request, Response, NextFunction } from 'express';
 import { type ZodSchema, ZodError } from 'zod/v3';
 
+/**
+ * Middleware to validate request body against a Zod schema.
+ * @param schema - The Zod schema to validate against.
+ * @returns Express middleware function.
+ *
+ * @example
+ * router.post('/endpoint', validateBody(schema), (req, res) => {
+ *   // Handle request
+ * });
+ */
 export const validateBody = (schema: ZodSchema) => {
   return (req: Request, res: Response, next: NextFunction) => {
     try {
